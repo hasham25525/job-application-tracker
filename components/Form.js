@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 
 
 
-function SaveData() {
-  document.getElementById("myForm").style.display = "none";
-}
-function Cancel() {
-  document.getElementById("myForm").style.display = "none";
-
-}
-
-
-
 const Form = () => {
 
+
+
+  const SaveData=(e)=> {
+    e.preventDefault();
+    document.getElementById("myForm").style.display = "none";
+  }
+ const Cancel=(e)=> {
+  e.preventDefault();
+    document.getElementById("myForm").style.display = "none";
+  
+  }
+  
   const [userApplication, setUserApplication] = useState({
     compName: "",
     jobRole: "",
@@ -28,26 +30,26 @@ const Form = () => {
   
     setUserApplication({...userApplication, [name]:value})
   };
-  
+
   return (
     <>
       <div className='container '>
         <form className='col-sm-4 mx-auto ' id='myForm' style={{ display: 'none' }} >
           <div className="mb-3 mt-3">
             <label className="form-label">Company Name</label>
-            <input type="text" className="form-control" id="compName" name="comp-name"
+            <input type="text" className="form-control" id="compName" name="compName"
               value={userApplication.compName}
               onChange={handleInput} />
           </div>
           <div className="mb-3">
             <label htmlFor="pwd" className="form-label">Job Role</label>
-            <input type="text" className="form-control" id="role" name="role"
+            <input type="text" className="form-control" id="role" name="jobRole"
               value={userApplication.jobRole}
               onChange={handleInput} />
           </div>
           <div className="dropdown mb-3">
             Application Status:
-            <select className="form-select" aria-label="status" name="app-status"
+            <select className="form-select" aria-label="status" name="jobStatus"
               value={userApplication.jobStatus}
               onChange={handleInput}>
               <option hidden={true}>Select Status</option>
