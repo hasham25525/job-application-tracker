@@ -1,36 +1,39 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 
 
 
 const Form = () => {
 
-
-
-  const SaveData=(e)=> {
-    e.preventDefault();
-    document.getElementById("myForm").style.display = "none";
-  }
- const Cancel=(e)=> {
-  e.preventDefault();
-    document.getElementById("myForm").style.display = "none";
-  
-  }
-  
   const [userApplication, setUserApplication] = useState({
     compName: "",
     jobRole: "",
     jobStatus: ""
   });
 
+  const [record, setRecord] = useState([])
+
+
 
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value
     console.log(name, value);
-  
-    setUserApplication({...userApplication, [name]:value})
+
+    setUserApplication({ ...userApplication, [name]: value })
   };
 
+  const SaveData = (e) => {
+    e.preventDefault();
+    const newData = { ...userApplication, id: new Date().getTime().toString() }
+    console.log(record);
+    setRecord([...record, newData]);
+    document.getElementById("myForm").style.display = "none";
+  }
+  const Cancel = (e) => {
+    e.preventDefault();
+    document.getElementById("myForm").style.display = "none";
+
+  }
   return (
     <>
       <div className='container '>
@@ -64,6 +67,18 @@ const Form = () => {
           <button type="submit" className="btn btn-success" onClick={SaveData}> Submit</button>
           <button className="btn btn-danger" onClick={Cancel}> Cancel</button>
         </form>
+      </div>
+
+      <div>
+        {
+          record.map((curElem)=>{
+            <div>
+              <p>{curElem.compName}</p>
+              <p>{curElem.jobRole}</p>
+              <p>{curElem.jobStatus}</p>
+            </div>
+          })
+        }
       </div>
     </>
   )
