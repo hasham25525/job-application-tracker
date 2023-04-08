@@ -18,13 +18,13 @@ const Nav = () => {
 
                         <button className="btn btn-light form-control me-2" onClick={Add} >Add Job</button>
                     </a>
-                    <form class="d-flex">
-             <input class="form-control me-2" type="text" placeholder="Search" />
-                    <button class="btn btn-light" type="button">Search</button>
-            </form>
+                    <form className="d-flex">
+                        <input className="form-control me-2" type="text" placeholder="Search" />
+                        <button className="btn btn-light" type="button">Search</button>
+                    </form>
                 </div>
             </nav>
-           
+
         </>
     )
 
