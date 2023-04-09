@@ -17,8 +17,6 @@ const Form = () => {
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value
-    console.log(name, value);
-
     setUserApplication({ ...userApplication, [name]: value })
   };
 
@@ -69,16 +67,22 @@ const Form = () => {
         </form>
       </div>
 
-      <div>
-        {
-          record.map((curElem)=>{
-            <div>
-              <p>{curElem.compName}</p>
-              <p>{curElem.jobRole}</p>
-              <p>{curElem.jobStatus}</p>
-            </div>
-          })
-        }
+      <div className='container '>
+        <div className='col-md-6'>
+          {
+            record.map((curElem) => {
+              return (
+                <div className='mycont '>
+                  <div className=' p-5'>
+                    <p><b>Company Name: </b>{curElem.compName}</p>
+                    <p><b>Job Role:</b> {curElem.jobRole}</p>
+                    <p><b>Application Status:</b> {curElem.jobStatus}</p>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     </>
   )
