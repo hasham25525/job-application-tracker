@@ -84,6 +84,27 @@ const Form = () => {
           }
         </div>
       </div>
+
+      {/* <table>
+        <tbody>
+        <tr>
+          <td>Company Name</td>
+          <td>Job Role</td>
+          <td>Job Status</td>
+        </tr>
+        {
+          record.map((curElem) => {
+            return (
+              <tr>
+                <td>{curElem.compName}</td>
+                <td> {curElem.jobRole}</td>
+                <td>{curElem.jobStatus}</td>
+              </tr>
+            )
+          })
+        }
+    </tbody>
+      </table> */}
     </>
   )
 }
