@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 
@@ -35,7 +36,7 @@ const Form = () => {
   return (
     <>
       <div className='container '>
-        <form className='col-sm-4 mx-auto ' id='myForm' style={{ display: 'none' }} >
+        <form className='col-sm-4 mx-auto shadow p-3 rounded' id='myForm' style={{ display: 'none' }} >
           <div className="mb-3 mt-3">
             <label className="form-label">Company Name</label>
             <input type="text" className="form-control" id="compName" name="compName"
@@ -62,12 +63,12 @@ const Form = () => {
               <option>Offer</option>
             </select>
           </div>
-          <button type="submit" className="btn btn-success" onClick={SaveData}> Submit</button>
-          <button className="btn btn-danger" onClick={Cancel}> Cancel</button>
+          <button type="submit" className="btn btn-success " onClick={SaveData}> Submit</button>
+          <button className="btn btn-danger " onClick={Cancel}> Cancel</button>
         </form>
       </div>
 
-      <div className='container '>
+      {/* <div className='container '>
         <div className='col-md-6'>
           {
             record.map((curElem) => {
@@ -83,28 +84,31 @@ const Form = () => {
             })
           }
         </div>
-      </div>
+      </div> */}
 
-      {/* <table>
-        <tbody>
-        <tr>
-          <td>Company Name</td>
-          <td>Job Role</td>
-          <td>Job Status</td>
-        </tr>
-        {
-          record.map((curElem) => {
-            return (
-              <tr>
-                <td>{curElem.compName}</td>
-                <td> {curElem.jobRole}</td>
-                <td>{curElem.jobStatus}</td>
-              </tr>
-            )
-          })
-        }
-    </tbody>
-      </table> */}
+      <div className='container'>
+        <table className=' table table-hover table-bordered p-3 col-md-8 my-3 '>
+          <tbody className='align-items-center '>
+            <tr>
+              <th>Company Name</th>
+              <th>Job Role</th>
+              <th>Job Status</th>
+            </tr>
+            {
+              record.map((curElem) => {
+                return (
+                  <tr >
+                    <td>{curElem.compName}</td>
+                    <td> {curElem.jobRole}</td>
+                    <td>{curElem.jobStatus}</td>
+                    <td><Link href='/'>edit</Link></td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }
