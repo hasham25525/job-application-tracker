@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 function EditInfo() {
+  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,27 +26,32 @@ function EditInfo() {
         <Modal.Body>
 
         <Form.Group className="mb-3">
-        <Form.Label>Disabled input</Form.Label>
-        <Form.Control placeholder="Disabled input" disabled />
+        <Form.Label>Company Name</Form.Label>
+        <Form.Control className="form-control" id="compName" name="compName"  />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>Disabled select menu</Form.Label>
-        <Form.Select disabled>
-          <option>Disabled select</option>
+        <Form.Label>Job Role</Form.Label>
+        <Form.Control className="form-control" id="jobRole" name="jobRole"  />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Select Status</Form.Label>
+        <Form.Select >
+        <option hidden={true}>Select Status</option>
+              <option disabled="disabled" default={true}> Select Status</option>
+              <option>Applied</option>
+              <option>Rejected</option>
+              <option>Interviewed</option>
+              <option>Technical</option>
+              <option>Offer</option>
         </Form.Select>
       </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Check type="checkbox" label="Can't check this" disabled />
-      </Form.Group>
-
-
-
+    
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary">Done</Button>
         </Modal.Footer>
       </Modal>
     </>

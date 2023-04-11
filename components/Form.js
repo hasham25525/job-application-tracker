@@ -1,10 +1,10 @@
 
-import React, { useState } from 'react';
+import { useState, React } from 'react';
 import Button from 'react-bootstrap/Button';
 import EditInfo from './EditInfo';
 
 
-const Form = () => {
+const MyForm = () => {
 
   const [userApplication, setUserApplication] = useState({
     compName: "",
@@ -50,8 +50,34 @@ const Form = () => {
 
   return (
     <>
+      {/* <Form>
+        <Form.Group className="mb-3">
+          <Form.Label>Company Name</Form.Label>
+          <Form.Control className="form-control" id="compName" name="compName" value={userApplication.compName}
+            onChange={handleInput} />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Job Role</Form.Label>
+          <Form.Control className="form-control" id="jobRole" name="jobRole" value={userApplication.jobRole}
+            onChange={handleInput} />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Select Status</Form.Label>
+          <Form.Select name="jobStatus" value={userApplication.jobStatus}
+            onChange={handleInput}>
+            <option hidden={true}>Select Status</option>
+            <option disabled="disabled" default={true}> Select Status</option>
+            <option>Applied</option>
+            <option>Rejected</option>
+            <option>Interviewed</option>
+            <option>Technical</option>
+            <option>Offer</option>
+          </Form.Select>
+        </Form.Group>
+        <Button variant='success' type='submit' onClick={SaveData}>Add Data</Button>
+        <Button variant='secondary' onClick={Cancel}>Cancel</Button>
+      </Form> */}
 
-    
       <div className='container '>
         <form className='col-sm-4 mx-auto shadow p-3 rounded' id='myForm' style={{ display: 'none' }} >
           <div className="mb-3 mt-3">
@@ -120,7 +146,7 @@ const Form = () => {
                     <td className='p-2'> {curElem.jobRole}</td>
                     <td className='p-2'>{curElem.jobStatus}</td>
                     <td>
-                      <EditInfo/>
+                      <EditInfo />
                       <Button className='btn btn-danger mx-1 px-2' onClick={() => deleteItem(curElem.id)}>Delete</Button>
                     </td>
                   </tr>
@@ -134,4 +160,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default MyForm
