@@ -1,6 +1,7 @@
-import Link from 'next/link';
-import React, { useState } from 'react';
 
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import EditInfo from './EditInfo';
 
 
 const Form = () => {
@@ -11,9 +12,7 @@ const Form = () => {
     jobStatus: ""
   });
 
-  const [record, setRecord] = useState([])
-
-
+  const [record, setRecord] = useState([]);
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -48,8 +47,11 @@ const Form = () => {
     })
     console.log(newEditItem);
   }
+
   return (
     <>
+
+    
       <div className='container '>
         <form className='col-sm-4 mx-auto shadow p-3 rounded' id='myForm' style={{ display: 'none' }} >
           <div className="mb-3 mt-3">
@@ -78,8 +80,8 @@ const Form = () => {
               <option>Offer</option>
             </select>
           </div>
-          <button type="submit" className="btn btn-success " onClick={SaveData}> Submit</button>
-          <button className="btn btn-danger " onClick={Cancel}> Cancel</button>
+          <button type="submit" className="btn btn-success  mx-1" onClick={SaveData}> Submit</button>
+          <button className="btn btn-danger mx-1 " onClick={Cancel}> Cancel</button>
         </form>
       </div>
 
@@ -105,20 +107,22 @@ const Form = () => {
         <table className=' table table-hover table-bordered p-3 col-md-8 my-3 '>
           <tbody className='align-items-center '>
             <tr>
-              <th>Company Name</th>
-              <th>Job Role</th>
-              <th>Job Status</th>
+              <th className=''>Company Name</th>
+              <th className=''>Job Role</th>
+              <th className=''>Job Status</th>
+              {/* <th className=''>Actions </th> */}
             </tr>
             {
               record.map((curElem) => {
                 return (
                   <tr key={curElem.id}>
-                    <td>{curElem.compName}</td>
-                    <td> {curElem.jobRole}</td>
-                    <td>{curElem.jobStatus}</td>
+                    <td className='p-2'>{curElem.compName}</td>
+                    <td className='p-2'> {curElem.jobRole}</td>
+                    <td className='p-2'>{curElem.jobStatus}</td>
                     <td>
-                      <button onClick={() => editItem(curElem.id)}>eidt</button>
-                      <button onClick={() => deleteItem(curElem.id)}>delete</button></td>
+                      <EditInfo/>
+                      <Button className='btn btn-danger mx-1 px-2' onClick={() => deleteItem(curElem.id)}>Delete</Button>
+                    </td>
                   </tr>
                 )
               })
