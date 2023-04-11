@@ -23,7 +23,7 @@ const Form = () => {
 
   const SaveData = (e) => {
     e.preventDefault();
-    const newData = { ...userApplication, id: new Date().getTime().toString() }
+    const newData = { ...userApplication, id: new Date().getTime().toString(), name: userApplication }
     console.log(record);
     setRecord([...record, newData]);
     document.getElementById("myForm").style.display = "none";
@@ -32,6 +32,21 @@ const Form = () => {
     e.preventDefault();
     document.getElementById("myForm").style.display = "none";
 
+  }
+
+  // delete the items
+  const deleteItem = (index) => {
+    const updateditems = record.filter((curElem) => {
+      return index !== curElem.id;
+    });
+    setRecord(updateditems);
+  }
+  //edit the item
+  const editItem = (id) => {
+    let newEditItem = record.find((curElem) => {
+      return curElem.id === id;
+    })
+    console.log(newEditItem);
   }
   return (
     <>
@@ -97,11 +112,13 @@ const Form = () => {
             {
               record.map((curElem) => {
                 return (
-                  <tr >
+                  <tr key={curElem.id}>
                     <td>{curElem.compName}</td>
                     <td> {curElem.jobRole}</td>
                     <td>{curElem.jobStatus}</td>
-                    <td><Link href='/'>edit</Link></td>
+                    <td>
+                      <button onClick={() => editItem(curElem.id)}>eidt</button>
+                      <button onClick={() => deleteItem(curElem.id)}>delete</button></td>
                   </tr>
                 )
               })
