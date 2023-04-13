@@ -1,14 +1,14 @@
-import Form from '@/components/Form'
-import Nav from '@/components/Nav'
+import MyNav from '@/components/MyNav'
 import React from 'react'
 import FormContextProvider from '@/components/Context.js/FormContextProvider'
+import HomePage from '@/components/HomePage'
 
 const index = () => {
   return (
     <>
-      <Nav />
-      <FormContextProvider>
-      <Form />
+    <FormContextProvider>
+ 
+      <HomePage />
       </FormContextProvider>
     </>
   )

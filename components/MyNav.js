@@ -5,7 +5,7 @@ function Add() {
     document.getElementById("myForm").style.display = "block";
 }
 
-const Nav = () => {
+const MyNav = () => {
     return (
         <>
 
@@ -30,4 +30,4 @@ const Nav = () => {
 
 }
 
-export default Nav
+export default MyNav
