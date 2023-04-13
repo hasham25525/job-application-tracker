@@ -1,16 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import EditInfo from './EditInfo';
-
+import { FormContext } from './Context.js/FormContextProvider';
 
 const Form = () => {
 
-  const [userApplication, setUserApplication] = useState({
-    compName: "",
-    jobRole: "",
-    jobStatus: ""
-  });
+  const userApplication = useContext(FormContext);
 
   const [record, setRecord] = useState([]);
 
@@ -51,7 +47,7 @@ const Form = () => {
   return (
     <>
 
-    
+
       <div className='container '>
         <form className='col-sm-4 mx-auto shadow p-3 rounded' id='myForm' style={{ display: 'none' }} >
           <div className="mb-3 mt-3">
@@ -120,7 +116,7 @@ const Form = () => {
                     <td className='p-2'> {curElem.jobRole}</td>
                     <td className='p-2'>{curElem.jobStatus}</td>
                     <td>
-                      <EditInfo/>
+                      <EditInfo />
                       <Button className='btn btn-danger mx-1 px-2' onClick={() => deleteItem(curElem.id)}>Delete</Button>
                     </td>
                   </tr>
