@@ -13,7 +13,6 @@ const HomePage = () => {
 
   return (
     <>
-      <MyNav />
 
       <div className='container '>
         <form className='col-sm-4 mx-auto shadow p-3 rounded' id='myForm' style={{ display: 'none' }} >

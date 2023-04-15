@@ -6,9 +6,10 @@ import HomePage from '@/components/HomePage'
 const index = () => {
   return (
     <>
-    <FormContextProvider>
- 
-      <HomePage />
+      <FormContextProvider>
+
+        <MyNav />
+        <HomePage />
       </FormContextProvider>
     </>
   )
