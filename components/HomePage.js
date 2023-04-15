@@ -5,7 +5,7 @@ import EditInfo from './EditInfo';
 import MyNav from './MyNav'
 import { FormContext } from './Context.js/FormContextProvider';
 
-const HomePage = () => {
+const HomePage = ({userApplication}) => {
 
   const userApplication = useContext(FormContext);
   const { record, SaveData, Cancel, deleteItem, handleInput } = useContext(FormContext);
@@ -64,7 +64,7 @@ const HomePage = () => {
                     <td className='p-2'> {curElem.jobRole}</td>
                     <td className='p-2'>{curElem.jobStatus}</td>
                     <td>
-                      <EditInfo />
+                      <EditInfo theRecord={userApplication}/>
                       <Button className='btn btn-danger mx-1 px-2' onClick={() => deleteItem(curElem.id)}>Delete</Button>
                     </td>
                   </tr>

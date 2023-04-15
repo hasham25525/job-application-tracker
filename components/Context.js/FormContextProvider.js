@@ -25,11 +25,11 @@ const FormContextProvider = (props) => {
         const newData = { ...userApplication, id: new Date().getTime().toString(), name: userApplication }
         console.log(record);
         setRecord([...record, newData]);
-        // document.getElementById("myForm").style.display = "none";
+        document.getElementById("myForm").style.display = "none";
     }
     const Cancel = (e) => {
         e.preventDefault();
-        // document.getElementById("myForm").style.display = "none";
+        document.getElementById("myForm").style.display = "none";
 
     }
 
@@ -48,9 +48,12 @@ const FormContextProvider = (props) => {
         console.log(newEditItem);
     }
 
+    const updateUser = (id, updatedUser) => {
+        setRecord(record.map((record) => record.id === id ? updatedUser: record))
+    }
 
     return (
-        <FormContext.Provider value={{ userApplication, setUserApplication, record, setRecord, SaveData, Cancel, deleteItem, editItem , handleInput}}>
+        <FormContext.Provider value={{ userApplication, setUserApplication, record, setRecord, SaveData, Cancel, deleteItem, editItem, handleInput ,updateUser}}>
             {props.children}
         </FormContext.Provider>
     )
