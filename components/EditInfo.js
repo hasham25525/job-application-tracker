@@ -27,6 +27,7 @@ function EditInfo({ theRecord }) {
 
       <Modal
         show={show}
+        size='md'
         onHide={handleClose}
         backdrop="static"
         keyboard={false}

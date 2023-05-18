@@ -2,7 +2,6 @@
 import React, { useState, useContext } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap/';
 import EditInfo from './EditInfo';
-import MyNav from './MyNav'
 import { FormContext } from './Context.js/FormContextProvider';
 
 const HomePage = () => {
@@ -20,39 +19,6 @@ const HomePage = () => {
 
   return (
     <>
-
-      <div className='container '>
-        <form className='col-sm-4 mx-auto shadow p-3 rounded' id='myForm' style={{ display: 'none' }} >
-          <div className="mb-3 mt-3">
-            <label className="form-label">Company Name</label>
-            <input type="text" className="form-control" id="compName" name="compName"
-              value={userApplication.compName}
-              onChange={handleInput} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="pwd" className="form-label">Job Role</label>
-            <input type="text" className="form-control" id="role" name="jobRole"
-              value={userApplication.jobRole}
-              onChange={handleInput} />
-          </div>
-          <div className="dropdown mb-3">
-            Application Status:
-            <select className="form-select" aria-label="status" name="jobStatus"
-              value={userApplication.jobStatus}
-              onChange={handleInput}>
-              <option hidden={true}>Select Status</option>
-              <option disabled="disabled" default={true}> Select Status</option>
-              <option>Applied</option>
-              <option>Rejected</option>
-              <option>Interviewed</option>
-              <option>Technical</option>
-              <option>Offer</option>
-            </select>
-          </div>
-          <button type="submit" className="btn btn-success  mx-1" onClick={SaveData}> Submit</button>
-          <button className="btn btn-danger mx-1 " onClick={Cancel}> Cancel</button>
-        </form>
-      </div>
 
       <div className='container'>
         <table className=' table table-hover table-bordered p-3 col-md-8 my-3 '>

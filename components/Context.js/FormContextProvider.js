@@ -25,13 +25,13 @@ const FormContextProvider = (props) => {
         const newData = { ...userApplication, id: new Date().getTime().toString(), name: userApplication }
         console.log(record);
         setRecord([...record, newData]);
-        document.getElementById("myForm").style.display = "none";
+        
     }
-    const Cancel = (e) => {
-        e.preventDefault();
-        document.getElementById("myForm").style.display = "none";
+    // const Cancel = (e) => {
+    //     e.preventDefault();
+    //     document.getElementById("myForm").style.display = "none";
 
-    }
+    // }
 
     // delete the items
     const deleteItem = (index) => {
@@ -49,11 +49,11 @@ const FormContextProvider = (props) => {
     }
 
     const updateUser = (id, updatedUser) => {
-        setRecord(record.map((record) => record.id === id ? updatedUser: record))
+        setRecord(record.map((record) => record.id === id ? updatedUser : record))
     }
 
     return (
-        <FormContext.Provider value={{ userApplication, setUserApplication, record, setRecord, SaveData, Cancel, deleteItem, editItem, handleInput ,updateUser}}>
+        <FormContext.Provider value={{ userApplication, setUserApplication, record, setRecord, SaveData, deleteItem, editItem, handleInput, updateUser }}>
             {props.children}
         </FormContext.Provider>
     )
