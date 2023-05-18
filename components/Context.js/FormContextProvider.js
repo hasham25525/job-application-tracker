@@ -25,6 +25,7 @@ const FormContextProvider = (props) => {
         const newData = { ...userApplication, id: new Date().getTime().toString(), name: userApplication }
         console.log(record);
         setRecord([...record, newData]);
+     
         
     }
     // const Cancel = (e) => {
