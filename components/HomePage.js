@@ -6,9 +6,7 @@ import FormContextProvider from './Context.js/FormContextProvider';
 
 const HomePage = () => {
 
-  const userApplication = useContext(FormContext);
-  const handleChange = useContext(FormContext);
-  const { record, deleteItem } = useContext(FormContext);
+  const { record, deleteItem, SaveData } = useContext(FormContext);
 
   // const [name, setName] = useState(record.name)
   const [show, setShow] = useState(false);
@@ -72,7 +70,7 @@ const HomePage = () => {
 
           <Form.Group className="mb-3">
             <Form.Label>Company Name</Form.Label>
-            <Form.Control className="form-control" id="compName" name="compName" onChange={handleEditRow}  />
+            <Form.Control className="form-control" id="compName" name="compName" value={record.compName} onChange={handleEditRow}  />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Job Role</Form.Label>
@@ -96,7 +94,7 @@ const HomePage = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Done</Button>
+          <Button variant="primary" onClick={SaveData}>Done</Button>
         </Modal.Footer>
       </Modal>
 }
