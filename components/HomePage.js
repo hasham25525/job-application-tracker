@@ -1,22 +1,28 @@
 
 import React, { useState, useContext } from 'react';
-import { Button, Modal, Form } from 'react-bootstrap/';
-import EditInfo from './EditInfo';
+import { Button, Modal, Form, Row } from 'react-bootstrap/';
 import { FormContext } from './Context.js/FormContextProvider';
+import FormContextProvider from './Context.js/FormContextProvider';
 
 const HomePage = () => {
 
   const userApplication = useContext(FormContext);
-  const { record, SaveData, Cancel, deleteItem, handleInput } = useContext(FormContext);
+  const handleChange = useContext(FormContext);
+  const { record, deleteItem } = useContext(FormContext);
 
   // const [name, setName] = useState(record.name)
-
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [rowEdit, setRowEdit]= useState(null);
+  const handleEditRow =(id)=>{
+    setRowEdit(id);
+    handleShow();
+}
+
+  
   return (
     <>
 
@@ -34,11 +40,11 @@ const HomePage = () => {
                 return (
                   <tr key={curElem.id}>
                     <td className='p-2'>{curElem.compName}</td>
-                    <td className='p-2'> {curElem.jobRole}</td>
+                    <td className='p-2'>{curElem.jobRole}</td>
                     <td className='p-2'>{curElem.jobStatus}</td>
                     <td>
 
-                      <Button variant='primary' onClick={handleShow} >Edit</Button>
+                      <Button variant='primary' onClick={()=> handleEditRow(curElem.id)} >Edit</Button>
                       <Button className='btn btn-danger mx-1 px-2' onClick={() => deleteItem(curElem.id)}>Delete</Button>
                     </td>
                   </tr>
@@ -57,6 +63,7 @@ const HomePage = () => {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        defaultValue={rowEdit!==null && record[rowEdit]}
       >
         <Modal.Header closeButton>
           <Modal.Title>Edit Info</Modal.Title>
@@ -65,7 +72,7 @@ const HomePage = () => {
 
           <Form.Group className="mb-3">
             <Form.Label>Company Name</Form.Label>
-            <Form.Control className="form-control" id="compName" name="compName" value={userApplication.compName} />
+            <Form.Control className="form-control" id="compName" name="compName" onChange={handleEditRow}  />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Job Role</Form.Label>

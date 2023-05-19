@@ -13,7 +13,7 @@ function Add(props) {
     return (
         <Modal
             {...props}
-            size="md"
+            size="md" id='addModal'
         >
             <Modal.Header closeButton>
                 <Modal.Title >
@@ -52,7 +52,7 @@ function Add(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant='secondary' onClick={props.onHide}>Close</Button>
-                <Button variant='success' onClick={SaveData}>Add</Button>
+                <Button variant='primary' type='submit' onClick={SaveData}>Add</Button>
 
             </Modal.Footer>
         </Modal>
