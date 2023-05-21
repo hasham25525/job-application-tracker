@@ -8,7 +8,8 @@ export const FormContext = createContext();
 
 
 
-const FormContextProvider = (props, defaultValue) => {
+const FormContextProvider = (props, {defaultValue}) => {
+
 
     const [userApplication, setUserApplication] = useState(defaultValue||{
         compName: "",
@@ -29,9 +30,11 @@ const FormContextProvider = (props, defaultValue) => {
     const SaveData = (e) => {
         e.preventDefault();
         const newData = { ...userApplication, id: new Date().getTime().toString(), name: userApplication }
-        console.log(record);
-        setRecord([...record, newData]);
         
+        setRecord([...record, newData]);
+        console.log(record);
+        setUserApplication(null);
+     
     }
   
     // delete the items

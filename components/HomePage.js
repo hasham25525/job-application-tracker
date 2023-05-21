@@ -70,7 +70,7 @@ const HomePage = () => {
 
           <Form.Group className="mb-3">
             <Form.Label>Company Name</Form.Label>
-            <Form.Control className="form-control" id="compName" name="compName" value={record.compName} onChange={handleEditRow}  />
+            <Form.Control className="form-control" id="compName" name="compName" value={record.jobRole} onChange={handleEditRow}  />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Job Role</Form.Label>

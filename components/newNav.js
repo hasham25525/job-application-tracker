@@ -36,7 +36,7 @@ function Add(props) {
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Select Status</Form.Label>
-                    <Form.Select name="jobStatus" value={userApplication.jobStatus}
+                    <Form.Select name="jobStatus" value={userApplication.jobStatus} 
                         onChange={handleInput}>
                         <option hidden={true}>Select Status</option>
                         <option disabled="disabled" default={true}> Select Status</option>
@@ -52,7 +52,7 @@ function Add(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant='secondary' onClick={props.onHide}>Close</Button>
-                <Button variant='primary' type='submit' onClick={SaveData}>Add</Button>
+                <Button variant='primary' type='submit' onClick={SaveData} >Add</Button>
 
             </Modal.Footer>
         </Modal>
