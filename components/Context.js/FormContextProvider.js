@@ -7,11 +7,9 @@ import Add from '../newNav'
 export const FormContext = createContext();
 
 
+const FormContextProvider = (props) => {
 
-const FormContextProvider = (props, {defaultValue}) => {
-
-
-    const [userApplication, setUserApplication] = useState(defaultValue||{
+    const [userApplication, setUserApplication] = useState({
         compName: "",
         jobRole: "",
         jobStatus: ""
@@ -28,12 +26,14 @@ const FormContextProvider = (props, {defaultValue}) => {
     };
 
     const SaveData = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const newData = { ...userApplication, id: new Date().getTime().toString(), name: userApplication }
         
         setRecord([...record, newData]);
         console.log(record);
         setUserApplication(null);
+        
+        
      
     }
   
@@ -44,13 +44,6 @@ const FormContextProvider = (props, {defaultValue}) => {
         });
         setRecord(updateditems);
     }
-    //edit the item
-    // const editItem = (id) => {
-    //     let newEditItem = record.find((curElem) => {
-    //         return curElem.id === id;
-    //     })
-    //     console.log(newEditItem);
-    // }
 
   
     const updateUser = (id, updatedUser) => {
@@ -58,7 +51,7 @@ const FormContextProvider = (props, {defaultValue}) => {
     }
 
     return (
-        <FormContext.Provider value={{ userApplication, setUserApplication, record, setRecord, SaveData, deleteItem, handleInput, updateUser }}>
+        <FormContext.Provider record={record} value={{ userApplication, setUserApplication, record, setRecord, SaveData, deleteItem, handleInput, updateUser }}>
             {props.children}
         </FormContext.Provider>
     )
