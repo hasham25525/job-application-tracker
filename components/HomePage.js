@@ -15,7 +15,7 @@ const HomePage = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [rowEdit, setRowEdit] = useState(null);
+  
 
   const handleEditRow = (index) => {
     const editedItem = record.find((curElem) => {
@@ -26,8 +26,9 @@ const HomePage = () => {
     handleShow();
   }
 
+  const [rowEdit, setRowEdit] = useState(null);
   const edited = (e) => {
-    setRowEdit(record.map((modalData, id) => {
+    setRowEdit(e.map((modalData, id) => {
       if (id!== handleEditRow)
         return setRecord(modalData);
     }))
