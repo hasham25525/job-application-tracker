@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 
 const Model = ({ show, handleClose, modalData, setModalData, userApplication, edited }) => {
-    console.log(modalData)
+    console.log(modalData);
 
 
     return (
@@ -21,20 +21,20 @@ const Model = ({ show, handleClose, modalData, setModalData, userApplication, ed
 
                     <Form.Group className="mb-3">
                         <Form.Label>Company Name</Form.Label>
-                        <Form.Control className="form-control" id="compName" name="compName"
-                            onChange={(e) => {
-                                setModalData(modalData => {
-                                    return { ...modalData, compName: e.target.value }
-                                })
-                            }} value={modalData?.compName} />
+                        <Form.Control className="form-control" id="compName" name="compName" 
+                        onChange={(e) => {
+                            setModalData(modalData => {
+                                return { ...modalData, compName: e.target.value }
+                            })
+                        }} value={modalData?.compName} />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Job Role</Form.Label>
-                        <Form.Control className="form-control" id="jobRole" name="jobRole" onChange={(e) => {
+                        <Form.Control className="form-control" id="jobRole" name="jobRole"  onChange={(e) => {
                             setModalData(modalData => {
                                 return { ...modalData, jobRole: e.target.value }
                             })
-                        }} value={modalData?.jobRole} />
+                        }}value={modalData?.jobRole} />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Select Status</Form.Label>

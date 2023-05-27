@@ -22,13 +22,13 @@ const HomePage = () => {
       return curElem.id === index;
     })
     setUserApplication(editedItem);
-    setModalData(editedItem);
+    // setModalData(editedItem);
     handleShow();
   }
 
-  const [rowEdit, setRowEdit] = useState(null);
+  const [rowEdit, setRowEdit] = useState([]);
   const edited = (e) => {
-    setRowEdit(e.map((modalData, id) => {
+    setRowEdit(rowEdit.map((modalData, id) => {
       if (id!== handleEditRow)
         return setRecord(modalData);
     }))
@@ -51,7 +51,9 @@ const HomePage = () => {
               record.map((curElem) => {
                 return (
                   <tr key={curElem.id}>
-                    <td className='p-2'>{curElem.compName}</td>
+                    <td className='p-2'  onChange={(e) => {
+                                setRecord(curElem.id, e.target.compName);
+                            }}>{curElem.compName}</td>
                     <td className='p-2'>{curElem.jobRole}</td>
                     <td className='p-2'>{curElem.jobStatus}</td>
                     <td>
@@ -73,6 +75,7 @@ const HomePage = () => {
           modalData={modalData}
           edited={edited}
           setModalData={setModalData} />
+         
 
       </div>
 
