@@ -9,31 +9,34 @@ const HomePage = () => {
 
   const { record, setRecord, setUserApplication, userApplication, deleteItem, SaveData } = useContext(FormContext);
 
-  const [modalData, setModalData] = useState(null);
+  const [modalData, setModalData] = useState([]);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  
+
 
   const handleEditRow = (index) => {
     const editedItem = record.find((curElem) => {
       return curElem.id === index;
     })
-    setUserApplication(editedItem);
-    // setModalData(editedItem);
+    // setUserApplication(editedItem);
+    setModalData(editedItem);
     handleShow();
   }
 
+  console.log("rec",record)
+
+
   const [rowEdit, setRowEdit] = useState([]);
+
   const edited = (e) => {
     setRowEdit(rowEdit.map((modalData, id) => {
-      if (id!== handleEditRow)
+      if (id !== handleEditRow)
         return setRecord(modalData);
     }))
   }
-
 
   return (
     <>
@@ -45,15 +48,13 @@ const HomePage = () => {
               <th className=''>Company Name</th>
               <th className=''>Job Role</th>
               <th className=''>Job Status</th>
-              {/* <th className=''>Actions </th> */}
+              <th className=''>Actions </th>
             </tr>
             {
               record.map((curElem) => {
                 return (
                   <tr key={curElem.id}>
-                    <td className='p-2'  onChange={(e) => {
-                                setRecord(curElem.id, e.target.compName);
-                            }}>{curElem.compName}</td>
+                    <td className='p-2' >{curElem.compName}</td>
                     <td className='p-2'>{curElem.jobRole}</td>
                     <td className='p-2'>{curElem.jobStatus}</td>
                     <td>
@@ -74,8 +75,10 @@ const HomePage = () => {
           handleClose={handleClose}
           modalData={modalData}
           edited={edited}
-          setModalData={setModalData} />
-         
+          setModalData={setModalData}
+          setRecord={setRecord}
+          record={record}
+        />
 
       </div>
 

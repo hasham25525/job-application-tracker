@@ -30,7 +30,6 @@ const FormContextProvider = (props) => {
         const newData = { ...userApplication, id: new Date().getTime().toString(), name: userApplication }
         
         setRecord([...record, newData]);
-        console.log(record);
         setUserApplication(null);
         
         
@@ -46,12 +45,12 @@ const FormContextProvider = (props) => {
     }
 
   
-    const updateUser = (id, updatedUser) => {
-        setRecord(record.map((record) => record.id === id ? updatedUser : record))
-    }
+    // const updateUser = (id, updatedUser) => {
+    //     setRecord(record.map((record) => record.id === id ? updatedUser : record))
+    // }
 
     return (
-        <FormContext.Provider record={record} value={{ userApplication, setUserApplication, record, setRecord, SaveData, deleteItem, handleInput, updateUser }}>
+        <FormContext.Provider record={record} value={{ userApplication, setUserApplication, record, setRecord, SaveData, deleteItem, handleInput }}>
             {props.children}
         </FormContext.Provider>
     )
